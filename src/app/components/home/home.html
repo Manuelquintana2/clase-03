@@ -1,0 +1,22 @@
+<input type="text" [(ngModel)]="dato" name="dato" class="form-control" placeholder="Dato" aria-label="Buscar"/>
+
+<button (click)="setDato()" class="btn btn-primary" type="button">enviar</button>
+<button (click)="getDato()" class="btn btn-primary" type="button">recibir</button>
+<p>El dato es: {{dato}}</p>
+
+<h1 style="text-align: center;"> Banderas del Mundo</h1>
+<div class="scroll-container">
+    @if(cargando){
+        <div>Cargando países...</div>
+    }@else {
+        <ul>
+            @for (pais of paises; track $index) 
+            {
+                <li>
+                    <img [src]="pais.flags.png" alt="{{ pais.name.common }}" width="50" />
+                    {{ pais.name.common }}
+                </li>
+            }
+        </ul>
+    }
+</div>
