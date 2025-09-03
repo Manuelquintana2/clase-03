@@ -1,12 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Supabase } from '../../servicios/supabase';
 import { User } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.css'
 })

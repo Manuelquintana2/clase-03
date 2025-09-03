@@ -1,11 +1,95 @@
-<div class="home-container">
-  <h1>Home</h1>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="p-4 bg-white rounded shadow-sm">
+        <h1 class="mb-3">Home</h1>
 
-  <!-- Mostrar saludo si hay usuario -->
-   @if(user) {
-    <p>👋 Bienvenido, {{ user.email }}</p>
-   } @else {
-    <p>No hay nadie registrado.</p>
-   }
-  <hr />
+        <!-- Mostrar saludo si hay usuario -->
+        <ng-container *ngIf="user; else noUser">
+          <div class="alert alert-primary">👋 Bienvenido, {{ user.email }}</div>
+        </ng-container>
+        <ng-template #noUser>
+          <div class="alert alert-secondary">No hay nadie registrado.</div>
+        </ng-template>
+
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="container my-4">
+  <div class="hero">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h2 class="display-6 fw-bold">Bienvenido a MiApp</h2>
+        <p class="lead">La forma más rápida de probar funcionalidades con un diseño atractivo y responsivo.</p>
+        <div class="mt-3">
+          <a routerLink="/register" class="btn btn-cta btn-lg me-2">Comenzar <i class="bi bi-arrow-right-circle ms-2"></i></a>
+          <a routerLink="/login" class="btn btn-outline-light btn-lg">Ingresar</a>
+        </div>
+      </div>
+      <div class="col-md-5 text-center">
+        <!-- Ilustración SVG ligera -->
+        <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="img-fluid">
+          <rect x="2" y="3" width="20" height="14" rx="2" fill="rgba(255,255,255,0.12)"/>
+          <circle cx="12" cy="10" r="3" fill="rgba(255,255,255,0.18)"/>
+          <rect x="8" y="17" width="8" height="2" rx="1" fill="rgba(255,255,255,0.18)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features -->
+<div class="container my-4">
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card feature-card p-3 text-center">
+        <i class="bi bi-speedometer2 fs-1 text-primary"></i>
+        <h5 class="mt-2">Rápido</h5>
+        <p class="text-muted small">Despliegue instantáneo y UI optimizada.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card feature-card p-3 text-center">
+        <i class="bi bi-shield-lock fs-1 text-primary"></i>
+        <h5 class="mt-2">Seguro</h5>
+        <p class="text-muted small">Autenticación y buenas prácticas de seguridad.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card feature-card p-3 text-center">
+        <i class="bi bi-phone-landscape fs-1 text-primary"></i>
+        <h5 class="mt-2">Responsive</h5>
+        <p class="text-muted small">Se ve bien en cualquier dispositivo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonios -->
+<div class="container my-5">
+  <h3 class="mb-4 text-center">Qué dicen los usuarios</h3>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="glass p-3">
+        <p class="mb-2">"Interfaz limpia y rápida, me encantó la experiencia"</p>
+        <div class="small text-muted">— Ana Pérez</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass p-3">
+        <p class="mb-2">"Fácil de usar y muy responsivo."</p>
+        <div class="small text-muted">— Carlos Ruiz</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass p-3">
+        <p class="mb-2">"Excelente para prototipos rápidos."</p>
+        <div class="small text-muted">— María López</div>
+      </div>
+    </div>
+  </div>
 </div>
