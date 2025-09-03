@@ -29,9 +29,13 @@
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="text" [(ngModel)]="dato" name="dato" placeholder="Search" aria-label="Search"/>
-        <p>El dato es: {{dato}}</p>
-        <button (click)="getDato()" class="btn btn-outline-success">Recibir</button>
-        <button (click)="setDato()" class="btn btn-outline-success">enviar</button>
+        @if(user) {
+          <span class="navbar-text me-2">👋 {{ user.email }}</span>
+          <button (click)="logout()" class="btn btn-outline-success">Logout</button>
+        } @else {
+          <button routerLink="login" class="btn btn-outline-success">Login</button>
+          <button routerLink="register" class="btn btn-outline-success">Register</button>
+        }
       </form>
     </div>
   </div>

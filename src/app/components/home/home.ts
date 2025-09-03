@@ -1,40 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Banderas } from '../../servicios/banderas';
+
 import { FormsModule } from '@angular/forms';
-import { Api, Pais } from '../../servicios/api';
 import { CommonModule } from '@angular/common';
+import { Supabase } from '../../servicios/supabase'; // 👈 importar servicio
+import { User } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-home',
+  standalone: true, // 👈 si usas Angular standalone
   imports: [FormsModule, CommonModule],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrls: ['./home.css']
 })
-export class Home{
-  paises : Pais[] = [];
+export class Home implements OnInit {
   cargando = true;
-  dato:string;
-  constructor(private banderasService : Banderas, private apiService: Api) { 
-    this.dato = "";
-  }
-  
-  ngOnInit(): void {
-    this.apiService.getPaises().subscribe({
-      next: (data) => {
-        this.paises = data;
-        this.cargando = false;
-      },
-      error: (error) => {
-        console.error('Error al cargar paises:', error);
-        this.cargando = false;
+  dato: string = '';
+  user: User | null = null;
+
+  constructor(
+    private supabase: Supabase
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    // obtener user aunque no haya session
+    this.user = await this.supabase.getUser();
+
+    // escuchar cambios futuros de auth
+    this.supabase.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        this.user = session.user;
       }
     });
-  }
-
-  setDato(){
-    this.banderasService.setDato(this.dato);
-  }
-  getDato():void{
-   this.dato = this.banderasService.getDato();
   }
 }
