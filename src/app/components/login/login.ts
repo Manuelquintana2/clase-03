@@ -7,7 +7,7 @@ import { Router, RouterLink } from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.html',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule],
 })
 export class Login {
    email = '';
