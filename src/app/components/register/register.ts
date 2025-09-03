@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.html',
-  imports: [CommonModule,FormsModule,RouterLink],
+  imports: [CommonModule,FormsModule,],
 })
 export class Register {
   email = '';
